@@ -1,0 +1,33 @@
+Key Terms
+    Stack
+    LIFO
+    Queue
+    FIFO
+    Enqueue
+    Dequeue
+
+STACK: think undo operations and redo.
+    -similar to list access restricted to 1 end.
+    -Last in First out.
+    -thought of vertical data structure
+    -Top of stack is the first and only accessible item
+    -implementation is Singly linked list with further constraints on how you can add or takeaway.
+        -push(data)
+            -would aim to add data to stack.
+        -pop()
+            -take away the item. return that node and then also change the top.
+
+QUEUE
+    -data structure that First in First out.
+    -lines are real life examples of queue hence name.
+    -development practice is a event loop of web browser
+        -first you do something then you do another. 
+    -Implementation : singly linked list with further constraints.
+        -enqueue(data): adds data to a queue (insertion)
+            -change the last item.
+        -dequeue():removes the oldest data added to a queue and point to a new first.
+
+Array Javascript Stack and Queue:
+    -push() puts item at the end this would be the same addition exhibited in Stacks and Queue
+    -pop() removes the last item this is the same way items are removed in Stack
+    -shift() removes first item this is the dequeue process.
