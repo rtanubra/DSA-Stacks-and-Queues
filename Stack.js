@@ -28,9 +28,14 @@ class Stack {
         return node.data;
     }
 }
-
-function myPrint(node){
-    var currentNode = node 
+function isEmpty(Stack){
+    console.log(`${Stack.top === null?"The Stack is empty":"The Stack is not empty"}`)
+}
+function peek(Stack){
+    console.log(`Top of the stack is ${Stack.top.data}`)
+}
+function display(Stack){
+    var currentNode = Stack.top
     console.log(`***********This side top********`)
     while (currentNode.next !== null){
         console.log(currentNode.data)
@@ -40,12 +45,62 @@ function myPrint(node){
 }
 function main(){
     const starTrek = new Stack()
+    const barTrek = new Stack()
     starTrek.push("Kirk")
     starTrek.push("Spock")
     starTrek.push("McCoy")
     starTrek.push("Scotty")
-    myPrint(starTrek.top)
+    display(starTrek)
 
+    console.log('\n**************************************************')
+    console.log('Testing peek to check the top')
+    console.log('\n**************************************************')
+    peek(starTrek)
+
+    console.log('\n**************************************************')
+    console.log('isEmpty check not empty')
+    console.log('\n**************************************************')
+    isEmpty(starTrek)
+
+    console.log('\n**************************************************')
+    console.log('isEmpty check empty')
+    console.log('\n**************************************************')
+    isEmpty(barTrek)
+
+    console.log('\n**************************************************')
+    console.log('Run deletes')
+    console.log('\n**************************************************')
+    console.log(starTrek.pop())
+    console.log(starTrek.pop())
+    console.log('****&&&&validate&&&&****')
+    display(starTrek)
 }
 
 main()
+
+console.log('\n true test of algos \n')
+
+function is_palindrome(s) {
+    s = s.toLowerCase().replace(/[^a-zA-Z0-9]/g, "");
+    const myStack = new Stack()
+    var count = 0 
+    while (count< s.length){
+        myStack.push(s[count])
+        count +=1
+    }
+
+    var top 
+    count = 0 
+    while (count < s.length){
+        if (s[count] != myStack.pop()){
+            return false
+        }
+        count +=1
+    }
+    return true
+}
+
+console.log(`Given dad is_palindrome() should return true - ${is_palindrome('dad')}`)
+console.log(`Given "A man, a plan, a canal: Panama" is_palindrome() should return true - ${is_palindrome('A man, a plan, a canal: Panama')}`)
+console.log(`Given 1001 is_palindrome() should return true - ${is_palindrome('1001')}`)
+console.log(`Given Tauhida is_palindrome() should return false - ${is_palindrome('Tauhida')}`)
