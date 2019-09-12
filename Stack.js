@@ -74,11 +74,21 @@ function main(){
     console.log(starTrek.pop())
     console.log('****&&&&validate&&&&****')
     display(starTrek)
+
+    console.log('\n true test of algos \n')
+    console.log(`Test 1 - is_palindrome`)
+    console.log(`Given dad is_palindrome() should return true - ${is_palindrome('dad')}`)
+    console.log(`Given "A man, a plan, a canal: Panama" is_palindrome() should return true - ${is_palindrome('A man, a plan, a canal: Panama')}`)
+    console.log(`Given 1001 is_palindrome() should return true - ${is_palindrome('1001')}`)
+    console.log(`Given Tauhida is_palindrome() should return false - ${is_palindrome('Tauhida')}`)
+    console.log(`\n Test 2 Matching Paranthes`)
+    console.log(`Given '(dad)' matchingParantheses() should return true - ${matchingParantheses('(dad)')}`)
+
 }
 
 main()
 
-console.log('\n true test of algos \n')
+
 
 function is_palindrome(s) {
     s = s.toLowerCase().replace(/[^a-zA-Z0-9]/g, "");
@@ -100,7 +110,38 @@ function is_palindrome(s) {
     return true
 }
 
-console.log(`Given dad is_palindrome() should return true - ${is_palindrome('dad')}`)
-console.log(`Given "A man, a plan, a canal: Panama" is_palindrome() should return true - ${is_palindrome('A man, a plan, a canal: Panama')}`)
-console.log(`Given 1001 is_palindrome() should return true - ${is_palindrome('1001')}`)
-console.log(`Given Tauhida is_palindrome() should return false - ${is_palindrome('Tauhida')}`)
+function matchingParantheses(myStr){
+    const myStack = new Stack()
+    var count = 0 
+    while (count< myStr.length){
+        myStack.push(myStr[count])
+        count +=1
+    }
+    var open = false 
+    var currentItem = false 
+    var current = myStack.top
+    display(myStack)
+    while (current.next !== null){
+        if (current.data === ")"){
+            if (open===true){
+                //openned when we are bracket is already open
+                console.log('1')
+                return false
+            }
+            open = true
+        }
+        if (current.data === "("){
+            if (open===false){
+                console.log('2')
+                return false
+            }
+            open = false
+        }
+    }
+    if(open===true){
+        console.log('here')
+        return false
+    }
+    return true
+}
+
